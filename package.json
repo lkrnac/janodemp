@@ -14,5 +14,8 @@
   "bugs": {
     "url": "https://github.com/lkrnac/janodemp/issues"
   },
-  "homepage": "https://github.com/lkrnac/janodemp"
+  "homepage": "https://github.com/lkrnac/janodemp",
+  "devDependencies": {
+    "gulp": "^3.8.10"
+  }
 }
