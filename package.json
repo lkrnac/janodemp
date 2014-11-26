@@ -16,6 +16,8 @@
   },
   "homepage": "https://github.com/lkrnac/janodemp",
   "devDependencies": {
-    "gulp": "^3.8.10"
+    "gulp": "^3.8.10",
+    "gulp-git": "^0.5.5",
+    "gulp-load-plugins": "^0.7.1"
   }
 }
