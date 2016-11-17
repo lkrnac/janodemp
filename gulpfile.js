@@ -1,13 +1,21 @@
-'use strict';
+"use strict";
 
-var gulp = require('gulp');
-var plugins = require('gulp-load-plugins')();
+const gulp = require("gulp");
+const eslint = require("gulp-eslint");
+const plugins = require("gulp-load-plugins")();
 
-gulp.task('cloneServer', function(){
-  plugins.git.clone('git@github.com:lkrnac/janodemp-server.git',
-    {cwd: '..'}, function(err){
-      if (err){
-        console.log(err);
+gulp.task("lint", () => {
+  gulp.src("gulpfile.js")
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
+
+gulp.task("cloneServer", () => {
+  plugins.git.clone("git@github.com:lkrnac/janodemp-server.git",
+    {cwd: "."}, (err) => {
+      if (err) {
+        console.log(err); // eslint-disable-line no-console
       }
     });
 });
