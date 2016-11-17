@@ -3,6 +3,7 @@
 const gulp = require("gulp");
 const eslint = require("gulp-eslint");
 const git = require("gulp-git");
+const del = require("del");
 
 gulp.task("lint", () => {
   gulp.src("gulpfile.js")
@@ -10,6 +11,8 @@ gulp.task("lint", () => {
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
 });
+
+gulp.task("clean", () => del("janodemp-server"));
 
 gulp.task("cloneServer", () => {
   git.clone("git@github.com:lkrnac/janodemp-server.git",

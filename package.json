@@ -17,6 +17,7 @@
   "homepage": "https://github.com/lkrnac/janodemp",
   "devDependencies": {
     "babel-eslint": "^7.1.0",
+    "del": "^2.2.2",
     "eslint": "^3.10.2",
     "eslint-config-walmart": "^1.1.0",
     "eslint-plugin-filenames": "^1.1.0",
