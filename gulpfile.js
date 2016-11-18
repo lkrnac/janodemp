@@ -3,37 +3,46 @@
 const gulp = require("gulp");
 const eslint = require("gulp-eslint");
 const git = require("gulp-git");
-const del = require("del");
 const runSequence = require("run-sequence");
+const shell = require("gulp-shell");
+const fs = require("fs");
 
 gulp.task("lint", () => {
-  gulp.src("gulpfile.js")
+  return gulp.src("gulpfile.js")
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
 });
 
-gulp.task("cleanServer", () => del("janodemp-server"));
-gulp.task("cleanClient", () => del("janodemp-client"));
-
-gulp.task("cloneServer", () => {
-  git.clone("git@github.com:lkrnac/janodemp-server.git",
-    {cwd: "."}, (err) => {
-      if (err) {
-        console.log(err); // eslint-disable-line no-console
-      }
-    });
+gulp.task("pull-server", (callback) => {
+  if (fs.existsSync("./janodemp-server/.git")) {
+    git.pull("origin", "master", {cwd: "janodemp-server"}, callback);
+  } else {
+    git.clone("https://github.com/lkrnac/janodemp-server.git", {cwd: "."}, callback);
+  }
 });
 
-gulp.task("cloneClient", () => {
-  git.clone("git@github.com:lkrnac/janodemp-client.git",
-    {cwd: "."}, (err) => {
-      if (err) {
-        console.log(err); // eslint-disable-line no-console
-      }
-    });
+gulp.task("pull-client", (callback) => {
+  if (fs.existsSync("./janodemp-client/.git")) {
+    git.pull("origin", "master", {cwd: "janodemp-client"}, callback);
+  } else {
+    git.clone("https://github.com/lkrnac/janodemp-client.git", {cwd: "."}, callback);
+  }
 });
+
+gulp.task("cd-client", (callback) => {
+  process.chdir("janodemp-client");
+  callback();
+});
+
+gulp.task("build-client", shell.task(["pwd", "npm i", "ng build --prod"]));
 
 gulp.task("default", (callback) => {
-  runSequence(["lint", "cleanClient", "cleanServer"], ["cloneClient", "cloneServer"], callback);
+  runSequence(
+    "lint",
+    ["pull-server", "pull-client"],
+    "cd-client",
+    "build-client",
+    callback
+  );
 });
