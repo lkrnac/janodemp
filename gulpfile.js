@@ -31,16 +31,24 @@ gulp.task("pull-client", (callback) => {
 });
 
 gulp.task("cd-client", (callback) => {
-  process.chdir("janodemp-client");
+  process.chdir("../janodemp-client");
+  callback();
+});
+
+gulp.task("cd-server", (callback) => {
+  process.chdir("janodemp-server");
   callback();
 });
 
 gulp.task("build-client", shell.task(["pwd", "npm i", "ng build --prod"]));
+gulp.task("build-server", shell.task(["pwd", "npm i"]));
 
 gulp.task("default", (callback) => {
   runSequence(
     "lint",
     ["pull-server", "pull-client"],
+    "cd-server",
+    "build-server",
     "cd-client",
     "build-client",
     callback
