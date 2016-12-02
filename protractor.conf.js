@@ -1,8 +1,10 @@
+'use strict';
 // Protractor configuration file, see link for more information
 // https://github.com/angular/protractor/blob/master/docs/referenceConf.js
 
 /*global jasmine */
-var SpecReporter = require('jasmine-spec-reporter');
+const SpecReporter = require('jasmine-spec-reporter');
+const tsNode = require('ts-node');
 
 exports.config = {
   allScriptsTimeout: 11000,
@@ -13,20 +15,20 @@ exports.config = {
     'browserName': 'chrome'
   },
   directConnect: true,
-  baseUrl: 'http://janodempdev-lkrnac.rhcloud.com/',
+  baseUrl: 'http://localhost:4200/',
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,
     defaultTimeoutInterval: 30000,
-    print: function() {}
+    print: () => {}
   },
   useAllAngular2AppRoots: true,
-  beforeLaunch: function() {
-    require('ts-node').register({
+  beforeLaunch: () => {
+    tsNode.register({
       project: 'e2e'
     });
   },
-  onPrepare: function() {
+  onPrepare: () => {
     jasmine.getEnv().addReporter(new SpecReporter());
   }
 };
