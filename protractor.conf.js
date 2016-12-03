@@ -15,7 +15,7 @@ exports.config = {
     'browserName': 'chrome'
   },
   directConnect: true,
-  baseUrl: 'http://localhost:4200/',
+  baseUrl: 'http://janodempdev-lkrnac.rhcloud.com/',
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,
