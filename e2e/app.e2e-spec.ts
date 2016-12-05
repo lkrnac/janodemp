@@ -9,6 +9,6 @@ describe('janodemp-client App', function() {
 
   it('should display application title', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('JAnodeMP!');
+    expect(page.getParagraphText()).toEqual('JAnodeMP');
   });
 });
