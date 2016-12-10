@@ -17,9 +17,9 @@
   },
   "homepage": "https://github.com/lkrnac/janodemp",
   "devDependencies": {
-    "angular-cli": "1.0.0-beta.19-3",
-    "babel-eslint": "^7.1.0",
-    "eslint": "^3.10.2",
+    "angular-cli": "1.0.0-beta.22-1",
+    "babel-eslint": "^7.1.1",
+    "eslint": "^3.12.0",
     "eslint-config-walmart": "^1.1.0",
     "eslint-plugin-filenames": "^1.1.0",
     "gulp": "^3.9.1",
@@ -27,11 +27,11 @@
     "gulp-git": "^1.12.0",
     "gulp-shell": "^0.5.2",
     "jasmine-spec-reporter": "^2.7.0",
-    "protractor": "4.0.9",
+    "protractor": "4.0.13",
     "run-sequence": "^1.2.2",
-    "ts-node": "1.2.1",
-    "tslint": "3.13.0",
-    "typescript": "~2.0.3",
-    "webdriver-manager": "10.2.5"
+    "ts-node": "1.7.2",
+    "tslint": "4.0.2",
+    "typescript": "~2.1.4",
+    "webdriver-manager": "10.2.10"
   }
 }
